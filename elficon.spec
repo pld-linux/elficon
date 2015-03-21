@@ -124,10 +124,11 @@ rm -rf $RPM_BUILD_ROOT
 ln -s elfres $RPM_BUILD_ROOT%{_bindir}/elficon
 
 %if 0
+ln -sf elfres/src/.libs/elfres elficon \
 # disabed, as it segfaults
 top_srcdir=$(pwd) \
-ELFRES=$RPM_BUILD_ROOT%{_bindir}/elfres \
-ELFICON=$RPM_BUILD_ROOT%{_bindir}/elficon \
+ELFRES=./elfres/src/.libs/elfres \
+ELFICON=./elficon \
 sh -x elfres/src/set-resources.sh $RPM_BUILD_ROOT%{_bindir}/elfres
 %endif
 
