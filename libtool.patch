@@ -20,3 +20,32 @@
  	@echo Setting icon for 'elfres'...
  	@cp ./elficon ./elficon-tmp
  	@cp ./elfres ./elfres-tmp
+--- /dev/null	2007-02-13 18:29:53.000000000 +0200
++++ ./elfres/src/set-resources.sh	2015-03-21 16:14:38.203852549 +0200
+@@ -0,0 +1,26 @@
++#!/bin/sh
++# Usage:
++# set-resources.sh BINARY_TO_MODIFY
++#
++
++# exit on any error
++set -e
++
++target=$1
++
++test -e "$target" || { echo "$target does not exist"; exit 1; }
++
++# use from $PATH, unless set with env var
++: ${ELFRES=elfres}
++: ${ELFICON=elficon}
++
++echo "Setting icon for '$target'..."
++$ELFICON -s $target 1d5481ac-052c-11dd-9a75-7751c40e021a
++$ELFICON -a $target "one-canvas.svg" one-canvas.svg
++$ELFRES -a $target ".glade" elfres.glade
++$ELFRES -a $target ".ui" elfres.ui
++$ELFRES -a $target "gears.svg" gears.svg
++$ELFRES -a $target "gears.png" gears.png
++
++echo "Adding translations for '$target'..."
++$ELFRES -a $target "de/LC_MESSAGES/$target.mo" ${top_srcdir}/po/de.gmo

@@ -1,7 +1,7 @@
 Summary:	Adding icons to ELF binaries
 Name:		elficon
 Version:	0.6.0
-Release:	0.4
+Release:	0.6
 # libr: LGPL v2.1; libr-libbfd backend: LGPL v3; elfres, gnome-thumbnailer: MIT
 License:	LGPL v2.1, LGPL v3, MIT
 Group:		Applications
@@ -122,6 +122,14 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -C elfres install \
 	DESTDIR=$RPM_BUILD_ROOT
 ln -s elfres $RPM_BUILD_ROOT%{_bindir}/elficon
+
+%if 0
+# disabed, as it segfaults
+top_srcdir=$(pwd) \
+ELFRES=$RPM_BUILD_ROOT%{_bindir}/elfres \
+ELFICON=$RPM_BUILD_ROOT%{_bindir}/elficon \
+sh -x elfres/src/set-resources.sh $RPM_BUILD_ROOT%{_bindir}/elfres
+%endif
 
 # gnome-elf-thumbnailer
 install -d $RPM_BUILD_ROOT%{_datadir}/gconf/schemas
