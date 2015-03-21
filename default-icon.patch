@@ -1,0 +1,11 @@
+--- elficon-0.6.0/gnome-elf-thumbnailer/src/gnome-elf-thumbnailer.sh~	2011-03-05 20:58:24.000000000 +0200
++++ elficon-0.6.0/gnome-elf-thumbnailer/src/gnome-elf-thumbnailer.sh	2015-03-21 13:44:46.464813856 +0200
+@@ -8,7 +8,7 @@
+ #  1) Image Size Request
+ #  2) Executable File
+ #  3) Temporary Output File
+-DEFAULT_ICON=/usr/share/icons/gnome/scalable/mimetypes/application-x-executable.svg
++DEFAULT_ICON=/usr/share/icons/HighContrast/scalable/mimetypes/application-x-executable.svg
+ #DEBUG_OUTPUT=/home/${USER}/thumbnail.txt
+ DEBUG_OUTPUT=/dev/null
+ 

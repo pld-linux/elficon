@@ -6,13 +6,14 @@
 Summary:	Adding icons to ELF binaries
 Name:		elficon
 Version:	0.6.0
-Release:	0.1
+Release:	0.2
 # libr: LGPL v2.1; libr-libbfd backend: LGPL v3; elfres, gnome-thumbnailer: MIT
 License:	LGPL v2.1, LGPL v3, MIT
 Group:		Applications
 Source0:	http://www.compholio.com/elfres/download.php?file=%{name}_%{version}.tar.gz
 # Source0-md5:	6ad0ff2dbd9f561b7372a03b5d82c778
 Patch0:		libtool.patch
+Patch1:		default-icon.patch
 URL:		http://www.compholio.com/elfres/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -64,6 +65,7 @@ License:	MIT
 Group:		X11/Applications
 Requires:	elfres = %{version}-%{release}
 Requires:	glib2 >= 1:2.26.0
+Requires:	gnome-themes-standard
 
 %description -n gnome-elf-thumbnailer
 Generate thumbnailers for ELF binaries with icons.
@@ -71,6 +73,7 @@ Generate thumbnailers for ELF binaries with icons.
 %prep
 %setup -qc
 %patch0 -p1
+%patch1 -p1
 
 %build
 
