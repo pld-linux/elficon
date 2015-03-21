@@ -1,0 +1,22 @@
+--- elficon-0.6.0/elfres/src/Makefile.am	2015-03-21 12:35:21.692638664 +0200
++++ elficon-0.6.0/elfres/src/Makefile.am	2015-03-21 12:53:05.797670563 +0200
+@@ -7,8 +7,7 @@
+ 	@LIBR_CFLAGS@
+ 
+ bin_PROGRAMS = \
+-	elfres \
+-	elficon
++	elfres
+ 
+ elfres_SOURCES = \
+ 	elfres-gui.c \
+@@ -26,7 +25,8 @@
+ 	@ln -s ./elfres ./elficon 2> /dev/null || true
+ 
+ # Add the icon, libglade file, and "gears image" for our binary
+-all-local: $(bin_PROGRAMS) $(top_srcdir)/po/de.gmo
++# FIXME: this does not work with libtool
++all-local-disabled: $(bin_PROGRAMS) $(top_srcdir)/po/de.gmo
+ 	@echo Setting icon for 'elfres'...
+ 	@cp ./elficon ./elficon-tmp
+ 	@cp ./elfres ./elfres-tmp
