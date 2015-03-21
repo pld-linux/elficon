@@ -1,12 +1,7 @@
-#
-# Conditional build:
-%bcond_with	tests		# build with tests
-%bcond_without	tests		# build without tests
-#
 Summary:	Adding icons to ELF binaries
 Name:		elficon
 Version:	0.6.0
-Release:	0.2
+Release:	0.4
 # libr: LGPL v2.1; libr-libbfd backend: LGPL v3; elfres, gnome-thumbnailer: MIT
 License:	LGPL v2.1, LGPL v3, MIT
 Group:		Applications
@@ -74,6 +69,8 @@ Generate thumbnailers for ELF binaries with icons.
 %setup -qc
 %patch0 -p1
 %patch1 -p1
+
+%{__make} -C libr clean
 
 %build
 
